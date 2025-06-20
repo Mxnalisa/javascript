@@ -1,13 +1,29 @@
 function generatePoem(event) {
   event.preventDefault();
 
-  new Typewriter("#poem", {
-    strings: "Sonnet 116",
+  const inputElement = document.querySelector(".instructions");
+  const topic = inputElement.value.trim();
+
+  const poemElement = document.querySelector("#poem");
+  poemElement.innerHTML = "";
+
+  const poem = [
+    `Oh ${topic}, you shine so bright,`,
+    "Dancing softly in the moon’s own light.",
+    "In whispered winds your name is heard,",
+    "As nature hums its gentle word.",
+    "",
+    `${topic}, your beauty can’t be caught,`,
+    "But in this verse, I’ve gently sought.",
+  ];
+
+  new Typewriter(poemElement, {
+    strings: poem,
     autoStart: true,
-    delay: 1,
+    delay: 25,
     cursor: "",
   });
 }
 
-let poemFormElement = document.querySelector("#poem-generator-form");
+const poemFormElement = document.querySelector("#poem-generator-form");
 poemFormElement.addEventListener("submit", generatePoem);
